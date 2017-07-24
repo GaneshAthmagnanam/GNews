@@ -1,0 +1,42 @@
+<!--
+  Generated template for the IndiaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>India</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<!--<img style="background-position: 0px 0px, 10px 10px;background-size: 20px 20px;background-image:linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);cursor: zoom-out;" src="http://acmtagra.com/images/news.gif" width="739" height="108">-->
+ 
+ <!--<div id="itemless" *ngIf="title==''">
+    
+<img class="irc_mut iUqvKovk8_4Y-HwpH6ZlgJaI" alt="Image result for no new news available" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwqjVsShik4zojOWhi4z9XKoiePvonFOdn8xSlNy3gvwe6yhma" width="304" height="156" style="margin-top: 89px;">
+<h5><article>Visit this section after sometime.</article></h5>
+ </div>-->
+ <div id="item">
+
+<section>
+    <h5><article>{{title}}</article></h5>
+    <p>
+    {{desc}}
+  </p>
+  <img src={{image}} width="739" height="160"/>
+  </section>
+  <!--<button>
+<ion-icon name="arrow-back" (click)="gotoPrevious()"></ion-icon></button>
+<button><ion-icon id="icon2" name="arrow-forward" (click)="gotToHome()"></ion-icon></button>-->
+<button ion-button round block (click)="gotToHome()">Next</button>
+<button ion-button round block (click)="gotoPrevious()">Back</button>
+ </div>
+</ion-content>
