@@ -14,6 +14,16 @@ export class CricNewsProvider {
   constructor(public http: Http) {
     console.log('Hello CricNewsProvider Provider');
   }
+
+getHome(){
+
+
+
+var xmlData=this.http.get('http://static.cricinfo.com/rss/livescores.xml')
+    .map(response => response.text())
+    return xmlData;
+  }
+
  getPolitics(){
 
 
@@ -22,6 +32,7 @@ var xmlData=this.http.get('http://www.news18.com/rss/politics.xml')
     .map(response => response.text())
     return xmlData;
   }
+  
   getRemoteData(){
 
 
