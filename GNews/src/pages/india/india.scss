@@ -11,6 +11,7 @@ button,ion-icon{
     position: absolute;
     right: 10px;
     top: 13px;
+    background-color:lightblue;
 }
 #footer{
     margin-top: 0px;
@@ -28,18 +29,18 @@ button,ion-icon{
 #two{
      position: absolute;
      right: 10px;
-     
+     margin-top: 10px;
      color: whitesmoke;
      background-color: black;
      width: 2em;  height: 2em;
 
 }
 #share{
-    
-     right: 0px;
-     
+    margin-top: -12px;
+     right: 55px;
+     position: absolute;
      color: black;
-     background-color: white;
+     background-color:lightgrey;
      width: 2em;  height: 2em;
 }
 #noAudio{

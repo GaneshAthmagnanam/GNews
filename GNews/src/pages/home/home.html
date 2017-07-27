@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="newcolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -18,9 +18,51 @@
     </ion-refresher-content>
   </ion-refresher>
   <div id="mainpage">
+
+
   <h3>Welcome to GNEWS</h3>
-  
-<img src="http://cdn.marketplaceimages.windowsphone.com/v8/images/ca519066-ecf8-4eda-aaf9-2425603245da?imageType=ws_icon_large" alt="gnews | windows phone apps games store (united states)">
+
+
+<ion-slides pager="true" autoplay="3000" loop="true">
+ 
+  <ion-slide>
+    <ion-row>
+    <img class="mySlides" src={{image_india}} (click)="openBrowser(link_india)" alt={{title_india}}/></ion-row>
+    <ion-row>
+    
+    <span id="sp">
+    {{title_india}}</span></ion-row>
+    <ion-col></ion-col>
+  </ion-slide>
+ 
+  <ion-slide>
+    <ion-row>
+    <img class="mySlides" src={{image_world}} (click)="openBrowser(link_world)" alt={{title_world}} /></ion-row>
+    <ion-row>
+    <span id="sp" >
+    {{title_world}}</span></ion-row><ion-col></ion-col>
+  </ion-slide>
+ 
+  <ion-slide>
+    <ion-row>
+    <img class="mySlides" src={{image_movies}} (click)="openBrowser(link_movies)" alt={{title_movies}}/></ion-row>
+    <ion-row>
+    
+    <span id="sp" >
+    {{title_movies}}</span></ion-row><ion-col></ion-col>
+  </ion-slide>
+ 
+  <ion-slide>
+    <ion-row>
+      <img class="mySlides" src={{image_cricket}} (click)="openBrowser(link_cricket)" alt={{title_cricket}}/></ion-row>
+    <ion-row>
+      <span id="sp" >
+    {{title_cricket}}</span><ion-col></ion-col>
+   </ion-row>
+    
+  </ion-slide>
+ 
+</ion-slides>
 <h3><article>GNEWS Live Scores</article></h3>
 <table>
   <tr>

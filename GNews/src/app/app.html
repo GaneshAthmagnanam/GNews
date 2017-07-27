@@ -1,13 +1,13 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>GNEWS</ion-title>
+    <ion-toolbar color="newcolor">
+      <ion-title><img width="50px" height="50px" src="http://cdn.marketplaceimages.windowsphone.com/v8/images/ca519066-ecf8-4eda-aaf9-2425603245da?imageType=ws_icon_large" alt="gnews | windows phone apps games store (united states)"></ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
-      <button id="list" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button  id="list" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>

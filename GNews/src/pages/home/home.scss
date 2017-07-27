@@ -9,6 +9,44 @@ h3,img,p{
     text-align: center;
 
 }
+ion-slides{
+    align-content: center;
+}
+ 
+    ion-slide img {
+
+      cursor: pointer;
+      align-content: center;
+      height: 40vh !important;
+      width: auto !important;
+    }
+    #tt{
+        margin-top: 20px;
+        font-size: 14px;
+        text-align: center;
+       
+        color: red;
+        text-decoration-style: solid;
+    }
+    #sp{
+        font-size: 14px;
+        text-align: center;
+       
+        color: red;
+        text-decoration-style: solid;
+    }
+    .mySlides{
+        margin-left: -13px;
+    }
+
+#share{
+    margin-top: -15px;
+     right: 10px;
+     position: absolute;
+     color: black;
+     background-color: 55acee;
+     width: 2em;  height: 2em;
+}
 h5{
     text-align: center;
     text-decoration: aqua;

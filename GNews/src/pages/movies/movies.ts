@@ -106,13 +106,11 @@ export class MoviesPage {
             if(i==0){   
                 console.log("c"+this.j);
                 textOrOptions={
-                text:"Good Morning. Welcome to G News. Section Movies. Headlines. "+this.title+". Detailed News. "+this.desc,
+                text:"Welcome to G News. Section Movies. Headlines. "+this.title+". Detailed News. "+this.desc,
                 locale:"en-US",
                 rate:0.8
             }
-            this.tts.speak(textOrOptions)
-            .then(() => console.log('Success'))
-            .catch((reason: any) => console.log(reason));
+            this.tts.speak(textOrOptions);
             }
             else{
                 //this.j=this.j+1;
@@ -122,27 +120,28 @@ export class MoviesPage {
                 rate:0.8
             }
     
-                this.tts.speak(textOrOptions)
-                .then(() => console.log('Success'))
-                .catch((reason: any) => console.log(reason));
+                this.tts.speak(textOrOptions);
             }
             
             this.j=this.j+1; 
             console.log("d"+this.j);
         }
-        else{
-            
-            console.log("e"+this.j);
-            this.tts.stop();
-            this.j=this.j-1;
-            console.log("f"+this.j);
-        }
+        
         
         console.log("g"+this.j);
         });
    }
 
-
+mute(){
+       
+            //alert("inside mute");
+            console.log("e"+this.j);
+            this.tts.speak(" ");
+            
+            this.j=this.j-1;
+            console.log("f"+this.j);
+        
+   }
 
     swipeEvent(e){
         if(e.direction == 2){
@@ -154,12 +153,7 @@ export class MoviesPage {
     }
     whatsappShare(){
     this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahVEhpY0pUTlI1WXJEczByRllnM2lfa0VfUDdz/view?usp=drivesdk" /* url */)
-      .then(()=>{
-        //alert("Success");
-      },
-      ()=>{
-         //alert("failed");
-      })
+      
     }
     openBrowser(){
       console.log("inside open browser"+this.link);
