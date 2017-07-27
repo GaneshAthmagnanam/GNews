@@ -4,4 +4,77 @@ h5{
  
 color: darkgreen;
 }
+button,ion-icon{
+    font-size: 10px;
+}
+#Audio{
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
+#footer{
+    margin-top: 0px;
+    
+}
+#one{
+    position: absolute;
+    left: 10px;
+    color: whitesmoke;
+    margin-top: 10px;
+    background-color: black;
+    border-radius: 50%;
+    width: 2em;  height: 2em;
+}
+#two{
+     position: absolute;
+     right: 10px;
+     
+     color: whitesmoke;
+     background-color: black;
+     width: 2em;  height: 2em;
+
+}
+#share{
+    
+     right: 0px;
+     
+     color: black;
+     background-color: white;
+     width: 2em;  height: 2em;
+}
+#noAudio{
+  
+    position: absolute;
+    right: 10px;
+    top: 13px;
+
+    text-decoration-line: line-through;
+}
+#navbar{
+    background-color: #4CAF50;
+}
+#share:hover{
+    background-color: #4CAF50; /* Green */
+    color: white;
+    width: 3em;  height: 3em;
+}
+#one:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    width: 3em;  height: 3em;
+}
+#two:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    width: 3em;  height: 3em;
+}
+#readMore{
+    
+    font-size: 12px;
+    display:block;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: blue;
+    background-color: whitesmoke;
+}
 }

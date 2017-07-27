@@ -8,6 +8,16 @@
 </ion-header>
 
 <ion-content padding>
+   
+   <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div id="mainpage">
   <h3>Welcome to GNEWS</h3>
   
 <img src="http://cdn.marketplaceimages.windowsphone.com/v8/images/ca519066-ecf8-4eda-aaf9-2425603245da?imageType=ws_icon_large" alt="gnews | windows phone apps games store (united states)">
@@ -33,5 +43,5 @@
   </tr>
   
 </table>
-
+   </div>
 </ion-content>

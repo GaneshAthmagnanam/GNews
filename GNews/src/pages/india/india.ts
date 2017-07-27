@@ -1,17 +1,22 @@
 import {
     Component
 } from '@angular/core';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Platform } from 'ionic-angular';
 import {
     NavController,
     NavParams,
     LoadingController
 } from 'ionic-angular';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 import {
     CricNewsProvider
 } from '../../providers/cric-news/cric-news';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 var xmlData;
 var visited = false;
 var i = 0;
+
 var repeatNo = null;
 /**
  * Generated class for the IndiaPage page.
@@ -26,12 +31,13 @@ var repeatNo = null;
 })
 export class IndiaPage {
     public title: any;
+    public j=0;
     desc: any;
     image: any;
-
+    link:any;
     content: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rData: CricNewsProvider, public loadingCtrl: LoadingController) {
+    constructor(public platform: Platform, private tts: TextToSpeech, private iab: InAppBrowser, private sharingVar: SocialSharing,public navCtrl: NavController, public navParams: NavParams, public rData: CricNewsProvider, public loadingCtrl: LoadingController) {
         var newsItems = this.rData.getIndia();
         console.log("first inside cons" + i + " visited value is" + visited);
         if (visited == false) {
@@ -49,11 +55,12 @@ export class IndiaPage {
                 this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 this.image = this.desc.substring(10, this.desc.indexOf("' "));
                 this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
                 console.log("fgj" + this.title + "desc is" + this.desc + "image is" + this.image);
-
+                
                 /* if(repeatNo==this.title && i==0){
                    this.title="";
                    this.desc="";
@@ -88,6 +95,7 @@ export class IndiaPage {
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 this.image = this.desc.substring(10, this.desc.indexOf("' "));
                 this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
+                this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 console.log("fgj" + this.title + "desc is" + this.desc + "image is" + this.image);
                 /* if(repeatNo==this.title && i==0){
                    this.title="";
@@ -102,6 +110,71 @@ export class IndiaPage {
 
     }
 
+    speak(event){
+       console.log("a"+this.j);
+       this.platform.ready().then(() => {
+        if(this.j==0){
+            
+            console.log("b"+this.j);   
+            let textOrOptions;
+            if(i==0){   
+                console.log("c"+this.j);
+                textOrOptions={
+                text:"Good Morning. Welcome to G News. Section India. Headlines. "+this.title+". Detailed News. "+this.desc,
+                locale:"en-US",
+                rate:0.8
+            }
+            this.tts.speak(textOrOptions)
+            .then(() => console.log('Success'))
+            .catch((reason: any) => console.log(reason));
+            }
+            else{
+                //this.j=this.j+1;
+                textOrOptions={
+                text:"Headlines. "+this.title+". Detail Description. "+this.desc,
+                locale:"en-US",
+                rate:0.8
+            }
+    
+                this.tts.speak(textOrOptions)
+                .then(() => console.log('Success'))
+                .catch((reason: any) => console.log(reason));
+            }
+            
+            this.j=this.j+1; 
+            console.log("d"+this.j);
+        }
+        else{
+            
+            console.log("e"+this.j);
+            this.tts.stop();
+            this.j=this.j-1;
+            console.log("f"+this.j);
+        }
+        
+        console.log("g"+this.j);
+        });
+   }
+
+
+    openBrowser(){
+      console.log("inside open browser"+this.link);
+      const browser = this.iab.create(this.link,'_blank');
+
+    }
+    swipeEvent(e){
+        if(e.direction == 2){
+            this.gotToHome();
+        }
+        if(e.direction == 4){
+            this.gotoPrevious();
+        }
+    }
+    whatsappShare(){
+    this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahVEhpY0pUTlI1WXJEczByRllnM2lfa0VfUDdz/view?usp=drivesdk" /* url */)
+      
+  }
+    
     gotToHome() {
 
         let loader = this.loadingCtrl.create({
@@ -125,7 +198,7 @@ export class IndiaPage {
         //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
         this.image = this.desc.substring(10, this.desc.indexOf("' "));
         this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
-
+        this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
         //var newsItems =this.rData.getRemoteData();
 
@@ -162,7 +235,7 @@ export class IndiaPage {
         //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
         this.image = this.desc.substring(10, this.desc.indexOf("' "));
         this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
-
+        this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
 
         //var newsItems =this.rData.getRemoteData();

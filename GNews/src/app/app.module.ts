@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -12,9 +12,9 @@ import { PoliticsPage } from '../pages/politics/politics';
 import { IndiaPage } from '../pages/india/india';
 import { WorldPage } from '../pages/world/world';
 import { MoviesPage } from '../pages/movies/movies';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { CricNewsProvider } from '../providers/cric-news/cric-news';
-
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 @NgModule({
   declarations: [
     MyApp,
@@ -43,6 +43,9 @@ import { CricNewsProvider } from '../providers/cric-news/cric-news';
   providers: [
     StatusBar,
     SplashScreen,
+    InAppBrowser,
+    SocialSharing,
+    TextToSpeech,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CricNewsProvider
   ]

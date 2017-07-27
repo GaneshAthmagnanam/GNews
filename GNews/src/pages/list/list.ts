@@ -9,6 +9,10 @@ import {
 import {
     CricNewsProvider
 } from '../../providers/cric-news/cric-news';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Platform } from 'ionic-angular';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 var xmlData;
 var visited = false;
 var i = 0;
@@ -18,11 +22,13 @@ var i = 0;
 })
 export class ListPage {
     title: any;
+    public j=0;
     desc: any;
+    link:any;
     image: any;
     content: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public rData: CricNewsProvider, public loadingCtrl: LoadingController) {
+    constructor(public platform: Platform, private tts: TextToSpeech, private iab: InAppBrowser, private sharingVar: SocialSharing, public navCtrl: NavController, public navParams: NavParams, public rData: CricNewsProvider, public loadingCtrl: LoadingController) {
         var newsItems = this.rData.getRemoteData();
         if (visited == false) {
             visited = true;
@@ -40,6 +46,7 @@ export class ListPage {
                 this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 this.image = this.desc.substring(10, this.desc.indexOf("' "));
                 this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
@@ -66,6 +73,7 @@ export class ListPage {
                 //this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.desc = xmlData.getElementsByTagName("item")[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 this.image = this.desc.substring(10, this.desc.indexOf("' "));
                 this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
                 console.log("fgj" + this.title + "desc is" + this.desc + "image is" + this.image);
@@ -80,7 +88,76 @@ export class ListPage {
             });
         }
     }
+    speak(event){
+       console.log("a"+this.j);
+       this.platform.ready().then(() => {
+        if(this.j==0){
+            
+            console.log("b"+this.j);   
+            let textOrOptions;
+            if(i==0){   
+                console.log("c"+this.j);
+                textOrOptions={
+                text:"Good Morning. Welcome to G News. Section Cricket. Headlines. "+this.title+". Detailed News. "+this.desc,
+                locale:"en-US",
+                rate:0.8
+            }
+            this.tts.speak(textOrOptions)
+            .then(() => console.log('Success'))
+            .catch((reason: any) => console.log(reason));
+            }
+            else{
+                //this.j=this.j+1;
+                textOrOptions={
+                text:"Headlines. "+this.title+". Detail Description. "+this.desc,
+                locale:"en-US",
+                rate:0.8
+            }
+    
+                this.tts.speak(textOrOptions)
+                .then(() => console.log('Success'))
+                .catch((reason: any) => console.log(reason));
+            }
+            
+            this.j=this.j+1; 
+            console.log("d"+this.j);
+        }
+        else{
+            
+            console.log("e"+this.j);
+            this.tts.stop();
+            this.j=this.j-1;
+            console.log("f"+this.j);
+        }
+        
+        console.log("g"+this.j);
+        });
+   }
 
+
+
+    swipeEvent(e){
+        if(e.direction == 2){
+            this.gotToHome();
+        }
+        if(e.direction == 4){
+            this.gotoPrevious();
+        }
+    }
+    whatsappShare(){
+    this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahVEhpY0pUTlI1WXJEczByRllnM2lfa0VfUDdz/view?usp=drivesdk" /* url */)
+      .then(()=>{
+        //alert("Success");
+      },
+      ()=>{
+         //alert("failed");
+      })
+    }
+    openBrowser(){
+      console.log("inside open browser"+this.link);
+      const browser = this.iab.create(this.link,'_blank');
+
+    }
     gotToHome() {
 
         let loader = this.loadingCtrl.create({
@@ -104,7 +181,7 @@ export class ListPage {
         //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
         this.image = this.desc.substring(10, this.desc.indexOf("' "));
         this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
-
+        this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
 
 
@@ -143,7 +220,7 @@ export class ListPage {
         //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
         this.image = this.desc.substring(10, this.desc.indexOf("' "));
         this.desc = this.desc.substring(this.desc.indexOf("/>") + 2);
-
+        this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
 
 

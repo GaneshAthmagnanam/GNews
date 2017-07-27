@@ -6,11 +6,26 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar id="navbar">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>India</ion-title>
+    <table>
+    <tr *ngIf="j=='0'">
+    <td>
+    <ion-title>India</ion-title></td>
+    <td>
+    <button id="noAudio" round (click)="speak($event)"><img class="irc_mi" src="https://cdn1.iconfinder.com/data/icons/basic-ui-rounded/512/ui-35-128.png"  width="20" height="30"></button>
+    </td>
+    </tr>
+    <tr *ngIf="j=='1'">
+    <td>
+    <ion-title>India</ion-title></td>
+    <td>
+    <button id="Audio" round (click)="speak($event)"><img class="irc_mi" src="https://alexgamesdesign.files.wordpress.com/2014/03/phones-speaker-icon.png"  width="20" height="30"></button>
+    </td>
+    </tr>
+    </table>
   </ion-navbar>
 
 </ion-header>
@@ -27,16 +42,27 @@
  <div id="item">
 
 <section>
-    <h5><article>{{title}}</article></h5>
+  
+    <table><tr><td>
+    <h5><article>{{title}}</article></h5></td>
+    <td><button id="share" ion-fab (click)="whatsappShare()"><ion-icon name="share"></ion-icon></button></td></tr></table>
     <p>
     {{desc}}
   </p>
-  <img src={{image}} width="739" height="160"/>
+  
+  <img src={{image}} width="100%" height="100%"/>
+  <div id="footer">
+  <table><tr><td><button id="one" ion-fab (click)="gotoPrevious()"><ion-icon name="arrow-back"></ion-icon></button></td>
+  
+  <td><button id="two" ion-fab (click)="gotToHome()"><ion-icon name="arrow-forward"></ion-icon></button></td></tr></table>
+  </div>
+  <button style="margin-top: 50px;" id="readMore" round (click)="openBrowser()">Read More</button>
+  
   </section>
   <!--<button>
 <ion-icon name="arrow-back" (click)="gotoPrevious()"></ion-icon></button>
-<button><ion-icon id="icon2" name="arrow-forward" (click)="gotToHome()"></ion-icon></button>-->
+<button><ion-icon id="icon2" name="arrow-forward" (click)="gotToHome()"></ion-icon></button>
 <button ion-button round block (click)="gotToHome()">Next</button>
-<button ion-button round block (click)="gotoPrevious()">Back</button>
+<button ion-button round block (click)="gotoPrevious()">Back</button>-->
  </div>
 </ion-content>

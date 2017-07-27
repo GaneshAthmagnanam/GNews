@@ -1,4 +1,7 @@
 page-home {
+    ion-refresher-content{
+     margin-top: 0px;   
+    }
 ion-content{
     background-color: beige;
 }    
@@ -12,7 +15,7 @@ h5{
     text-decoration-style: wavy;
 }
 img{
-    padding-left: 10%;
+    padding-left: 12%;
 }
 table {
     border-collapse: collapse;
@@ -30,4 +33,5 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+
 }
