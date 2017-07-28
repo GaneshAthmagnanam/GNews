@@ -4,6 +4,8 @@ import {
     CricNewsProvider
 } from '../../providers/cric-news/cric-news';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ModalController } from 'ionic-angular';
+import { AboutContentPage } from '../about-content/about-content';
 var xmlData;
 @Component({
   selector: 'page-home',
@@ -45,7 +47,7 @@ export class HomePage {
   team2_name_match1:any;
   team1_name_match2:any;
   team2_name_match2:any;
-  constructor(private iab: InAppBrowser, public alertCtrl: AlertController,private platform: Platform,public rData: CricNewsProvider,public navCtrl: NavController) {
+  constructor(public modalCtrl: ModalController,private iab: InAppBrowser, public alertCtrl: AlertController,private platform: Platform,public rData: CricNewsProvider,public navCtrl: NavController) {
     this.platform.ready().then(() => {
  console.log( navigator.onLine);
  this.isOffline();
@@ -168,7 +170,10 @@ export class HomePage {
             }); 
   }
 
-
+presentModal() {
+    let modal = this.modalCtrl.create(AboutContentPage);
+    modal.present();
+  }
 
 loadData(){
 

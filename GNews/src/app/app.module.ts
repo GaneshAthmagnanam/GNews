@@ -12,6 +12,7 @@ import { PoliticsPage } from '../pages/politics/politics';
 import { IndiaPage } from '../pages/india/india';
 import { WorldPage } from '../pages/world/world';
 import { MoviesPage } from '../pages/movies/movies';
+import { AboutContentPage } from '../pages/about-content/about-content';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CricNewsProvider } from '../providers/cric-news/cric-news';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
@@ -23,7 +24,8 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
     PoliticsPage,
     IndiaPage,
     MoviesPage,
-    WorldPage
+    WorldPage,
+    AboutContentPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
     PoliticsPage,
     IndiaPage,
     MoviesPage,
-    WorldPage
+    WorldPage,
+    AboutContentPage
   ],
   providers: [
     StatusBar,

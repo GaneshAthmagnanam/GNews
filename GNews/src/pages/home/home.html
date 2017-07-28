@@ -3,7 +3,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <table id="titleHome">
+    <tr>
+    <td>
+    <ion-title style="margin-top: 0px;">Home</ion-title></td>
+    <td>
+    <button id="about" round (click)="presentModal()"><img class="irc_mi" src="http://www.freeiconspng.com/uploads/team-icon-30.jpg" alt="Image result for about icon" width="50" height="50" ></button>
+    </td></tr></table>
+    
+    
   </ion-navbar>
 </ion-header>
 
@@ -24,7 +32,7 @@
   <h3 id="gnews">Welcome to GNEWS</h3>
 
 
-<ion-slides initialSlide="2" zoom="true" parallax="true" paginationType="bullets" pager="true" centeredSlides direction="horizontal" autoplay="3000" loop="true" effect="cube">
+<ion-slides initialSlide="1" zoom="true" parallax="true" paginationType="bullets" pager="true" centeredSlides direction="horizontal" autoplay="3000" loop="true" effect="cube">
  
   
   
