@@ -20,6 +20,7 @@
   <div id="mainpage">
 
 
+<<<<<<< HEAD
   <h3 id="gnews">Welcome to GNEWS</h3>
 
 
@@ -28,6 +29,24 @@
   
  
   <ion-slide *ngIf="{{image_world}}!=undefined">
+=======
+  <h3>Welcome to GNEWS</h3>
+
+
+<ion-slides pager="true" autoplay="3000" loop="true">
+ 
+  <ion-slide>
+    <ion-row>
+    <img class="mySlides" src={{image_india}} (click)="openBrowser(link_india)" alt={{title_india}}/></ion-row>
+    <ion-row>
+    
+    <span id="sp">
+    {{title_india}}</span></ion-row>
+    <ion-col></ion-col>
+  </ion-slide>
+ 
+  <ion-slide>
+>>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
     <ion-row>
     <img class="mySlides" src={{image_world}} (click)="openBrowser(link_world)" alt={{title_world}} /></ion-row>
     <ion-row>
@@ -53,6 +72,7 @@
    </ion-row>
     
   </ion-slide>
+<<<<<<< HEAD
   <ion-slide>
     <ion-row></ion-row>
     <ion-row>
@@ -70,6 +90,11 @@
 
 
 
+=======
+ 
+</ion-slides>
+<h3><article>GNEWS Live Scores</article></h3>
+>>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
 <table>
   <tr>
     <th colspan="3" id="thead" style="text-align: center">Cricket Live Matches</th>

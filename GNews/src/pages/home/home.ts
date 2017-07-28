@@ -55,9 +55,77 @@ export class HomePage {
 }
 );
 //india news
+<<<<<<< HEAD
    //Math.floor(Math.random() * 6) + 1  
    
    this.loadData();
+=======
+   var india_news =this.rData.getIndia(); 
+   india_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_india = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_india = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_india=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_india = this.desc_india.substring(10, this.desc_india.indexOf("' "));
+                
+
+            }); 
+//world news
+   var world_news =this.rData.getWorld(); 
+   world_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_world = xmlData.getElementsByTagName("item")[1].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_world = xmlData.getElementsByTagName("item")[1].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_world=xmlData.getElementsByTagName("item")[1].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_world = this.desc_world.substring(10, this.desc_world.indexOf("' "));
+                
+
+            }); 
+//movies news
+   var movies_news =this.rData.getMovies(); 
+   movies_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_movies = xmlData.getElementsByTagName("item")[2].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_movies = xmlData.getElementsByTagName("item")[2].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_movies=xmlData.getElementsByTagName("item")[2].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_movies = this.desc_movies.substring(10, this.desc_movies.indexOf("' "));
+                
+
+            }); 
+//cricket news
+   var cricket_news =this.rData.getRemoteData(); 
+   cricket_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_cricket = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_cricket = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_cricket=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_cricket = this.desc_cricket.substring(10, this.desc_cricket.indexOf("' "));
+                
+
+            });                         
+
+
+>>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
 
     var newsItems = this.rData.getHome(); 
     newsItems.subscribe(data => {
@@ -99,6 +167,7 @@ export class HomePage {
 
             }); 
   }
+<<<<<<< HEAD
 
 
 loadData(){
@@ -191,6 +260,8 @@ loadData(){
 }
 
 
+=======
+>>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
   openBrowser(x){
       console.log("inside open browser"+x);
       const browser = this.iab.create(x,'_blank');
