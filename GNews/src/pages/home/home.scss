@@ -11,10 +11,7 @@ h3,img,p{
 }
 ion-slides{
     align-content: center;
-<<<<<<< HEAD
-     
-=======
->>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
+
 }
  
     ion-slide img {
@@ -35,7 +32,7 @@ ion-slides{
     #sp{
         font-size: 14px;
         text-align: center;
-<<<<<<< HEAD
+
         margin-top: 10px;
         color: darkred;
         text-decoration-style: solid;
@@ -48,8 +45,6 @@ ion-slides{
     text-align: center;
     background-color:#55acee;
 
-}
-=======
        
         color: red;
         text-decoration-style: solid;
@@ -57,8 +52,9 @@ ion-slides{
     .mySlides{
         margin-left: -13px;
     }
-
->>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
+#hideMe{
+    display: none;
+}
 #share{
     margin-top: -15px;
      right: 10px;
