@@ -141,12 +141,12 @@ export class IndiaPage {
             
             console.log("d"+this.j);
         }
-<<<<<<< HEAD
+
        let myContainer = <HTMLElement> document.querySelector("#noAudio");
        myContainer.innerHTML = '<button id="Audio" round (click)="mute()"><img class="irc_mi" src="https://alexgamesdesign.files.wordpress.com/2014/03/phones-speaker-icon.png"  width="20" height="30"></button>';
-=======
+
         
->>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
+
         
         console.log("g"+this.j);
        // });
