@@ -55,11 +55,11 @@ export class HomePage {
 }
 );
 //india news
-<<<<<<< HEAD
+
    //Math.floor(Math.random() * 6) + 1  
    
    this.loadData();
-=======
+
    var india_news =this.rData.getIndia(); 
    india_news.subscribe(data => {
                 
@@ -125,7 +125,7 @@ export class HomePage {
             });                         
 
 
->>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
+
 
     var newsItems = this.rData.getHome(); 
     newsItems.subscribe(data => {
@@ -167,7 +167,7 @@ export class HomePage {
 
             }); 
   }
-<<<<<<< HEAD
+
 
 
 loadData(){
@@ -260,8 +260,6 @@ loadData(){
 }
 
 
-=======
->>>>>>> 77936580ebb6f159703a0f24009a6452b0eb4736
   openBrowser(x){
       console.log("inside open browser"+x);
       const browser = this.iab.create(x,'_blank');
