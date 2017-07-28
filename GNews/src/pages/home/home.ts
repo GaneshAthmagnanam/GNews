@@ -3,7 +3,7 @@ import { NavController, Platform, AlertController, NavParams, LoadingController 
 import {
     CricNewsProvider
 } from '../../providers/cric-news/cric-news';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 var xmlData;
 @Component({
   selector: 'page-home',
@@ -11,6 +11,31 @@ var xmlData;
 })
 export class HomePage {
   public title:any;
+  public title_india:any;
+  public title_world:any;
+  public title_movies:any;
+  public title_cricket:any;
+
+  //desc
+  public desc_india:any;
+  public desc_world:any;
+  public desc_movies:any;
+  public desc_cricket:any;
+
+
+  //image
+  public image_india:any;
+  public image_world:any;
+  public image_movies:any;
+  public image_cricket:any;
+
+  //link
+  public link_india:any;
+  public link_world:any;
+  public link_movies:any;
+  public link_cricket:any;
+
+
   x:any;
   public description_match1:any;
   public description_match2:any;
@@ -20,7 +45,7 @@ export class HomePage {
   team2_name_match1:any;
   team1_name_match2:any;
   team2_name_match2:any;
-  constructor(public alertCtrl: AlertController,private platform: Platform,public rData: CricNewsProvider,public navCtrl: NavController) {
+  constructor(private iab: InAppBrowser, public alertCtrl: AlertController,private platform: Platform,public rData: CricNewsProvider,public navCtrl: NavController) {
     this.platform.ready().then(() => {
  console.log( navigator.onLine);
  this.isOffline();
@@ -29,6 +54,11 @@ export class HomePage {
 //navigator.Connection.type === 'none' ? this.isOffline() : console.log('online');
 }
 );
+//india news
+   //Math.floor(Math.random() * 6) + 1  
+   
+   this.loadData();
+
     var newsItems = this.rData.getHome(); 
     newsItems.subscribe(data => {
                 if (data) {
@@ -69,6 +99,104 @@ export class HomePage {
 
             }); 
   }
+
+
+loadData(){
+
+    var item_india=Math.floor(Math.random() * 6) + 1;
+   var item_world=Math.floor(Math.random() * 6) + 1;
+   var item_movie=Math.floor(Math.random() * 6) + 1;
+   var item_cricket=Math.floor(Math.random() * 6) + 1;
+
+   var india_news =this.rData.getIndia(); 
+   india_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_india = xmlData.getElementsByTagName("item")[item_india].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_india = xmlData.getElementsByTagName("item")[item_india].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_india=xmlData.getElementsByTagName("item")[item_india].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_india = this.desc_india.substring(10, this.desc_india.indexOf("' "));
+                
+
+            }); 
+//world news
+   var world_news =this.rData.getWorld(); 
+   world_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_world = xmlData.getElementsByTagName("item")[item_world].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_world = xmlData.getElementsByTagName("item")[item_world].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_world=xmlData.getElementsByTagName("item")[item_world].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_world = this.desc_world.substring(10, this.desc_world.indexOf("' "));
+                
+
+            }); 
+//movies news
+   var movies_news =this.rData.getMovies(); 
+   movies_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_movies = xmlData.getElementsByTagName("item")[item_movie].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_movies = xmlData.getElementsByTagName("item")[item_movie].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_movies=xmlData.getElementsByTagName("item")[item_movie].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_movies = this.desc_movies.substring(10, this.desc_movies.indexOf("' "));
+                
+
+            }); 
+//cricket news
+   var cricket_news =this.rData.getRemoteData(); 
+   cricket_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_cricket = xmlData.getElementsByTagName("item")[item_cricket].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_cricket = xmlData.getElementsByTagName("item")[item_cricket].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_cricket=xmlData.getElementsByTagName("item")[item_cricket].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_cricket = this.desc_cricket.substring(10, this.desc_cricket.indexOf("' "));
+                
+
+            });                         
+
+    var india_news =this.rData.getIndia(); 
+   india_news.subscribe(data => {
+                
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title_india = xmlData.getElementsByTagName("item")[item_india].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc_india = xmlData.getElementsByTagName("item")[item_india].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link_india=xmlData.getElementsByTagName("item")[item_india].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image_india = this.desc_india.substring(10, this.desc_india.indexOf("' "));
+                
+
+            });         
+
+}
+
+
+  openBrowser(x){
+      console.log("inside open browser"+x);
+      const browser = this.iab.create(x,'_blank');
+
+    }
+
   isOffline(){
 
    
@@ -103,6 +231,7 @@ this.x.style.display = 'none';
       refresher.complete();
     }, 2000);
     if(this.isOffline()==null){
+        this.loadData();
         var newsItems = this.rData.getHome(); 
     newsItems.subscribe(data => {
                 if (data) {

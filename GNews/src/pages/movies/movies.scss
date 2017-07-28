@@ -25,18 +25,18 @@ color: darkgreen;
 #two{
      position: absolute;
      right: 10px;
-     
+     margin-top: 10px;
      color: whitesmoke;
      background-color: black;
      width: 2em;  height: 2em;
 
 }
 #share{
-    
-     right: 0px;
-     
+    margin-top: -12px;
+     right: 55px;
+     position: absolute;
      color: black;
-     background-color: white;
+     background-color: lightgrey;
      width: 2em;  height: 2em;
 }
 #noAudio{
@@ -48,11 +48,12 @@ color: darkgreen;
     text-decoration-line: line-through;
 }
 
+/*
 #share:hover{
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     color: white;
     width: 3em;  height: 3em;
-}
+}*/
 #one:hover {
     background-color: #4CAF50; /* Green */
     color: white;
