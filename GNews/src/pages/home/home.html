@@ -1,4 +1,4 @@
-<ion-header>
+﻿<ion-header>
   <ion-navbar color="newcolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -7,8 +7,11 @@
     <tr>
     <td>
     <ion-title style="margin-top: 0px;">Home</ion-title></td>
+     <td>
+    <button id="about" round (click)="presentModal()"><img src="../../assets/about.png" alt="Image result for about icon" width="30" height="40" ></button>
+    </td>
     <td>
-    <button id="about" round (click)="presentModal()"><img class="irc_mi" src="http://www.freeiconspng.com/uploads/team-icon-30.jpg" alt="Image result for about icon" width="50" height="50" ></button>
+    <button id="settings" round (click)="doRadio()"><img src="../../assets/settings.png" width="30" height="40"></button>
     </td></tr></table>
     
     

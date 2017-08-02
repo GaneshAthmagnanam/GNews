@@ -1,31 +1,26 @@
-﻿
+﻿<!--
+  Generated template for the LanguagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
 
   <ion-navbar color="newcolor">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    
     <table>
-    <tr *ngIf="j=='0'">
+    <tr>
     <td>
-    <ion-title>India</ion-title></td>
+    <ion-title>{{testRadioResult}}</ion-title></td>
     <td>
     <button id="share"  ion-fab (click)="whatsappShare()"><ion-icon name="share"></ion-icon></button></td>
-    <td>
-    <button id="noAudio" round (click)="speak($event)"><img class="irc_mi" src="https://cdn1.iconfinder.com/data/icons/basic-ui-rounded/512/ui-35-128.png"  width="20" height="30"></button>
-    </td>
+    
     
     </tr>
-    <tr *ngIf="j=='1'">
     <td>
-    <ion-title>India</ion-title></td>
-    <td>
-    <button id="share" ion-fab (click)="whatsappShare()"><ion-icon name="share"></ion-icon></button></td>
-    <td>
-    <button id="Audio" round (click)="mute()"><img class="irc_mi" src="https://alexgamesdesign.files.wordpress.com/2014/03/phones-speaker-icon.png"  width="20" height="30"></button>
-    </td>
     
-    </tr>
+     <button id="settings" round (click)="doRadio()"><img src="../../assets/settings.png" width="30" height="40"></button>
+    </td>
     </table>
   </ion-navbar>
 
@@ -56,7 +51,7 @@
   
   <td><button id="two" ion-fab (click)="gotToHome()"><ion-icon name="arrow-forward"></ion-icon></button></td></tr></table>
   </div>
-  <button style="margin-top: 50px;" id="readMore" round (click)="openBrowser()">Read More</button>
+  <button style="margin-top: 50px;" id="readMore" round (click)="openBrowser()">{{readMore}}</button>
   
   </section>
   <!--<button>

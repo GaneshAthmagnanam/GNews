@@ -1,17 +1,23 @@
-﻿page-india {
+﻿page-language {
+
+ion-menu.show-menu {
+    display: block;
+}
+p {
+    height:100px;
+    line-height:20px;
+    overflow:hidden;
+}
+
 h5{
     padding-top: 5%;   
  
 color: darkgreen;
 }
-button,ion-icon{
-    font-size: 10px;
-}
 #Audio{
     position: absolute;
     right: 10px;
     top: 13px;
-    background-color:white;
 }
 #footer{
     margin-top: 0px;
@@ -37,23 +43,30 @@ button,ion-icon{
 }
 #share{
     margin-top: -12px;
-     right: 55px;
+     right: 45px;
      position: absolute;
      color: black;
      background-color:white;
      width: 2em;  height: 2em;
 }
-#noAudio{
+#close{
   
     position: absolute;
     right: 10px;
     top: 13px;
-    background-color:white;
+
     text-decoration-line: line-through;
 }
-#navbar{
-    background-color: #4CAF50;
+
+#settings{
+  
+    position: absolute;
+    right: 0px;
+    top: 9px;
+     background-color:#55acee;
+    
 }
+
 /*
 #share:hover{
     background-color: #4CAF50; 

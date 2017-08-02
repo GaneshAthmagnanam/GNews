@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PoliticsPage } from '../pages/politics/politics';
 import { IndiaPage } from '../pages/india/india';
 import { WorldPage } from '../pages/world/world';
+import { LanguagePage } from '../pages/language/language';
 import { MoviesPage } from '../pages/movies/movies';
 import { AboutContentPage } from '../pages/about-content/about-content';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -20,6 +21,7 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
   declarations: [
     MyApp,
     HomePage,
+    LanguagePage,
     ListPage,
     PoliticsPage,
     IndiaPage,
@@ -36,6 +38,7 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
   entryComponents: [
     MyApp,
     HomePage,
+    LanguagePage,
     ListPage,
     PoliticsPage,
     IndiaPage,

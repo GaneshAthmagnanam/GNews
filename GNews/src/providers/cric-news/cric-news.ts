@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -14,10 +14,48 @@ export class CricNewsProvider {
   constructor(public http: Http) {
     console.log('Hello CricNewsProvider Provider');
   }
+  
+  getBengali(){
+  var xmlData=this.http.get('http://feeds.bbci.co.uk/bengali/rss.xml')
+    .map(response => response.text())
+    return xmlData;
+  }
 
+  getNepali(){
+  var xmlData=this.http.get('http://feeds.bbci.co.uk/nepali/rss.xml')
+    .map(response => response.text())
+    return xmlData;
+  }
+
+  getUrdu(){
+  var xmlData=this.http.get('http://feeds.bbci.co.uk/urdu/rss.xml')
+    .map(response => response.text())
+    return xmlData;
+  }
+
+  getSinhala(){
+  var xmlData=this.http.get('http://feeds.bbci.co.uk/sinhala/rss.xml')
+    .map(response => response.text())
+    return xmlData;
+  }
+
+
+  getHindi(){
+  var xmlData=this.http.get('http://feeds.bbci.co.uk/hindi/rss.xml')
+    .map(response => response.text())
+    return xmlData;
+  }
+  getMalayalam(){
+  var xmlData=this.http.get('http://anweshanam.com/index.php/rss/latest')
+    .map(response => response.text())
+    return xmlData;
+  }
+getTamil(){
+  var xmlData=this.http.get('http://feeds.bbci.co.uk/tamil/rss.xml')
+    .map(response => response.text())
+    return xmlData;
+  }
 getHome(){
-
-
 
 var xmlData=this.http.get('http://static.cricinfo.com/rss/livescores.xml')
     .map(response => response.text())

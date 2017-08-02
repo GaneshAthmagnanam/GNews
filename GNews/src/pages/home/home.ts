@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { NavController, Platform, AlertController, NavParams, LoadingController } from 'ionic-angular';
+﻿import { Component } from '@angular/core';
+import { NavController, Platform, AlertController, NavParams, LoadingController, ViewController } from 'ionic-angular';
 import {
     CricNewsProvider
 } from '../../providers/cric-news/cric-news';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ModalController } from 'ionic-angular';
 import { AboutContentPage } from '../about-content/about-content';
+import { LanguagePage } from '../language/language';
 var xmlData;
 @Component({
   selector: 'page-home',
@@ -17,7 +18,8 @@ export class HomePage {
   public title_world:any;
   public title_movies:any;
   public title_cricket:any;
-
+  testRadioOpen: boolean;
+  public testRadioResult:any;
   //desc
   public desc_india:any;
   public desc_world:any;
@@ -47,7 +49,7 @@ export class HomePage {
   team2_name_match1:any;
   team1_name_match2:any;
   team2_name_match2:any;
-  constructor(public modalCtrl: ModalController,private iab: InAppBrowser, public alertCtrl: AlertController,private platform: Platform,public rData: CricNewsProvider,public navCtrl: NavController) {
+  constructor(public viewCtrl: ViewController,public modalCtrl: ModalController,private iab: InAppBrowser, public alertCtrl: AlertController,private platform: Platform,public rData: CricNewsProvider,public navCtrl: NavController) {
     this.platform.ready().then(() => {
  console.log( navigator.onLine);
  this.isOffline();
@@ -175,6 +177,12 @@ presentModal() {
     modal.present();
   }
 
+  settingsPage() {
+    let modal = this.modalCtrl.create(LanguagePage);
+    modal.present();
+  }
+
+
 loadData(){
 
     var item_india=Math.floor(Math.random() * 6) + 1;
@@ -263,7 +271,120 @@ loadData(){
             });         
 
 }
+ dismiss() {
+    this.viewCtrl.dismiss();
+  }
 
+
+doExecute(){
+
+/*let modal = this.modalCtrl.create(LanguagePage);
+    modal.present();*/
+ if(this.testRadioResult=="English"){
+  this.testRadioOpen = false;}
+
+  else{
+
+this.navCtrl.push(LanguagePage, {
+    lang: this.testRadioResult
+});
+  }
+ /* if(this.testRadioResult=="Tamil"){
+  //templateUrl: 'language.html';
+  var tamil_news =this.rData.getTamil(); 
+   tamil_news.subscribe(data => {
+                
+                //தமிழ்
+                this.testRadioResult="தமிழ்";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.readMore="மேலும் படிக்க";
+                //console.log("ethukku"+this.image);
+            }); 
+}
+else if(this.testRadioResult=="English"){
+  this.dismiss();}*/
+
+  }
+
+
+
+
+
+doRadio() {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Select Language');
+
+    alert.addInput({
+      type: 'radio',
+      label: 'English',
+      value: 'English',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Tamil',
+      value: 'Tamil'
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Hindi',
+      value: 'Hindi'
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Malayalam',
+      value: 'Malayalam'
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Sinhala',
+      value: 'Sinhala'
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Urdu',
+      value: 'Urdu'
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'Nepali',
+      value: 'Nepali'
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Bengali',
+      value: 'Bengali'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Ok',
+      handler: data => {
+        console.log('Radio data:', data);
+        this.testRadioOpen = false;
+        this.testRadioResult = data;
+        this.doExecute();
+      }
+    });
+
+    alert.present().then(() => {
+      this.testRadioOpen = true;
+    });
+  }
 
   openBrowser(x){
       console.log("inside open browser"+x);
@@ -285,7 +406,7 @@ this.x.style.display = 'none';
               enableBackdropDismiss: false,
               buttons: [{
           text: "OK",
-          handler: () => { this.exitApp() }
+          handler: () => { this.exitApp1() }
         }]
 
            }).present();}
@@ -293,8 +414,17 @@ this.x.style.display = 'none';
              return null;
            }
  }
- exitApp(){
-    this.platform.exitApp();
+ exitApp1(){
+
+
+
+    this.platform.ready().then(() => {
+            this.platform.registerBackButtonAction(() => {
+                navigator['app'].exitApp();                
+            });
+        });
+    //this.platform.exitApp();
+    //exit(0);
   }
   doRefresh(refresher) {
     this.isOffline();
