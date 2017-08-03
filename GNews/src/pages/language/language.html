@@ -19,7 +19,7 @@
     </tr>
     <td>
     
-     <button id="settings" round (click)="doRadio()"><img src="../../assets/settings.png" width="30" height="40"></button>
+     <button id="settings" round (click)="doRadio()"><img src="assets/settings.png" width="30" height="40"></button>
     </td>
     </table>
   </ion-navbar>
@@ -35,7 +35,7 @@
 <img class="irc_mut iUqvKovk8_4Y-HwpH6ZlgJaI" alt="Image result for no new news available" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwqjVsShik4zojOWhi4z9XKoiePvonFOdn8xSlNy3gvwe6yhma" width="304" height="156" style="margin-top: 89px;">
 <h5><article>Visit this section after sometime.</article></h5>
  </div>-->
- <div id="item">
+
 
 <section>
   
@@ -45,19 +45,14 @@
     {{desc}}
   </p>
   
-  <img src={{image}} width="100%" height="100%"/>
-  <div id="footer">
+  <img src={{image}} width="100%" height="100%" alt="news image" />
+  
   <table><tr><td><button id="one" ion-fab (click)="gotoPrevious()"><ion-icon name="arrow-back"></ion-icon></button></td>
   
   <td><button id="two" ion-fab (click)="gotToHome()"><ion-icon name="arrow-forward"></ion-icon></button></td></tr></table>
-  </div>
+  
   <button style="margin-top: 50px;" id="readMore" round (click)="openBrowser()">{{readMore}}</button>
   
   </section>
-  <!--<button>
-<ion-icon name="arrow-back" (click)="gotoPrevious()"></ion-icon></button>
-<button><ion-icon id="icon2" name="arrow-forward" (click)="gotToHome()"></ion-icon></button>
-<button ion-button round block (click)="gotToHome()">Next</button>
-<button ion-button round block (click)="gotoPrevious()">Back</button>-->
- </div>
+ 
 </ion-content>

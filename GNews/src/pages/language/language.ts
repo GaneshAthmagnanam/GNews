@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, LoadingController, ViewContr
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import {CricNewsProvider} from '../../providers/cric-news/cric-news';
+
 var xmlData;
 var i = 0;
 var visitedTamil = false;
@@ -71,8 +72,9 @@ export class LanguagePage {
                 this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="மேலும் படிக்க";
+                //alert("not from home"+this.image+this.readMore);
                 //console.log("ethukku"+this.image);
             }); 
   //}
@@ -125,7 +127,7 @@ export class LanguagePage {
                 this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="और पढ़ें";
                 //console.log("ethukku"+this.image);
             });
@@ -175,7 +177,7 @@ hindi_news.subscribe(data => {
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="مزید پڑھ";
                 //console.log("ethukku"+this.image);
             });
@@ -200,7 +202,7 @@ hindi_news.subscribe(data => {
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="වැඩිදුර කියවන්න";
                 //console.log("ethukku"+this.image);
             });
@@ -279,7 +281,7 @@ else{
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="थप पढ्नुहोस्";
                 //console.log("ethukku"+this.image);
             });
@@ -304,7 +306,7 @@ else{
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="আরও পড়ুন";
                 //console.log("ethukku"+this.image);
             });
@@ -325,15 +327,17 @@ else{
                 this.testRadioResult="தமிழ்";
                 this.valueItem="Tamil";
                 var parser = new DOMParser();
-                xmlData = parser.parseFromString(data, "application/xml");
-
+                
                 // var elems = document.querySelectorAll('item,title')
                 this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
                 this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="மேலும் படிக்க";
+                //alert("not from home"+this.image+this.readMore);
+                
+                //alert("from home"+this.image+this.readMore);
                 //console.log("ethukku"+this.image);
             }); 
             i=0;
@@ -359,7 +363,7 @@ else if(this.languageValue=="Hindi"){
                 this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="और पढ़ें";
                 //console.log("ethukku"+this.image);
             });
@@ -413,7 +417,7 @@ else if(this.languageValue=="Hindi"){
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="আরও পড়ুন";
                 //console.log("ethukku"+this.image);
             });
@@ -437,7 +441,7 @@ else if(this.languageValue=="Hindi"){
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="थप पढ्नुहोस्";
                 //console.log("ethukku"+this.image);
             });
@@ -461,7 +465,7 @@ else if(this.languageValue=="Hindi"){
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="مزید پڑھ";
                 //console.log("ethukku"+this.image);
             });
@@ -486,7 +490,7 @@ else if(this.languageValue=="Hindi"){
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 this.readMore="වැඩිදුර කියවන්න";
                 //console.log("ethukku"+this.image);
             });
@@ -616,7 +620,7 @@ else if(this.languageValue=="Hindi"){
                 }
                 else{
                 console.log("6");
-                this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 }
 
 
@@ -647,6 +651,7 @@ else if(this.languageValue=="Hindi"){
                 this.desc = this.desc.replace(re1,"");
                 this.desc = this.desc.replace(re2,"");
                 this.desc = this.desc.replace(re3,"");
+               
                 this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
                 if(this.valueItem=="Malayalam"){
@@ -655,7 +660,7 @@ else if(this.languageValue=="Hindi"){
                 }
                 else{
                 console.log("6");
-                this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 }
 
 

@@ -30,6 +30,7 @@ export class HomePage {
   //image
   public image_india:any;
   public image_world:any;
+
   public image_movies:any;
   public image_cricket:any;
 
