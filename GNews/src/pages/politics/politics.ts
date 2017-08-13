@@ -1,4 +1,4 @@
-import {
+﻿import {
     Component
 } from '@angular/core';
 import {
@@ -149,8 +149,8 @@ mute(){
         }
     }
     whatsappShare(){
-    this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahVEhpY0pUTlI1WXJEczByRllnM2lfa0VfUDdz/view?usp=drivesdk" /* url */)
-      
+    //this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahVEhpY0pUTlI1WXJEczByRllnM2lfa0VfUDdz/view?usp=drivesdk" /* url */)
+      this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahb3JSOEdZbkZBOGFES2tialBkaHF4WDZNTENn/view?usp=drivesdk" /* url */)
     }
     openBrowser(){
       console.log("inside open browser"+this.link);

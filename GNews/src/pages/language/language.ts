@@ -18,6 +18,13 @@ export class LanguagePage {
   
   public readMore:any;
   public title:any;
+  public t:any;
+   public d:any;
+    public l:any;
+     public im:any;
+      public read:any;
+      public dd:any;
+      public head:any;
   public desc:any;
   public link:any;
   public image:any;
@@ -29,13 +36,29 @@ export class LanguagePage {
   constructor(public viewCtrl: ViewController,public loadingCtrl: LoadingController, private iab: InAppBrowser, private sharingVar: SocialSharing,public rData: CricNewsProvider,public alerCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
  
  this.languageValue=this.navParams.get('lang');
- console.log("lang value is"+this.languageValue)
+ this.t=this.navParams.get('t');
+ this.head=this.navParams.get('head');
+ this.d=this.navParams.get('d');
+ this.l=this.navParams.get('l');
+ this.im=this.navParams.get('im');
+ this.read=this.navParams.get('read');
+ console.log("title value is"+this.t+"lang value is"+this.languageValue+"nothing")
  if(this.languageValue=="Tamil" ||this.languageValue=="Sinhala" ||this.languageValue=="Urdu" ||this.languageValue=="Bengali" || this.languageValue=="Nepali" || this.languageValue=="English" || this.languageValue=="Hindi" || this.languageValue=="Malayalam"){
- this.doExecute1();
-
+   //alert("here i go");
+                this.testRadioResult=this.head;
+                this.title = this.t;
+                this.desc = this.d;
+                this.link=this.l;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image = this.im;
+                this.readMore=this.read;
+                this.demo();
+                //xmlData=this.dd;
+                //console.log("data="+xmlData);
  }
  else{
- this.doRadio();
+ //alert("here we go");
+ this.dismiss();
   }
   //tamil news
   
@@ -49,6 +72,167 @@ export class LanguagePage {
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad LanguagePage'+this.app.rootPage);
+  }
+
+
+  demo(){
+  console.log("inside demo");
+  if(this.languageValue=="Tamil"){
+  var tamil_news =this.rData.getTamil(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  
+   tamil_news.subscribe(data => {
+                console.log("B"+i);
+                //தமிழ்
+                //this.testRadioResult="தமிழ்";
+                this.valueItem="Tamil";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+});
+i=0;
+//console.log("inside demo ends here"+xmlData);
+}
+
+  else if(this.languageValue=="Sinhala"){
+  var sinhala_news =this.rData.getSinhala(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  
+   sinhala_news.subscribe(data => {
+                console.log("B"+i);
+                //தமிழ்
+                //this.testRadioResult="தமிழ்";
+                this.valueItem="Sinhala";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+});
+i=0;
+//console.log("inside demo ends here"+xmlData);
+}
+else if(this.languageValue=="English"){
+                this.dismiss();
+  }
+
+else if(this.languageValue=="Urdu"){
+  var urdu_news =this.rData.getUrdu(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  
+   urdu_news.subscribe(data => {
+                console.log("B"+i);
+                //தமிழ்
+                //this.testRadioResult="தமிழ்";
+                this.valueItem="Urdu";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+});
+i=0;
+//console.log("inside demo ends here"+xmlData);
+}
+
+else if(this.languageValue=="Bengali"){
+  var bengali_news =this.rData.getBengali(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  
+   bengali_news.subscribe(data => {
+               // console.log("B"+i);
+                //தமிழ்
+                //this.testRadioResult="தமிழ்";
+                this.valueItem="Bengali";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+});
+i=0;
+//console.log("inside demo ends here"+xmlData);
+}
+
+else if(this.languageValue=="Nepali"){
+  var nepali_news =this.rData.getNepali(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  
+   nepali_news.subscribe(data => {
+                //console.log("B"+i);
+                //தமிழ்
+                //this.testRadioResult="தமிழ்";
+                this.valueItem="Nepali";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+});
+i=0;
+//console.log("inside demo ends here"+xmlData);
+}
+
+else if(this.languageValue=="Hindi"){
+  var hindi_news =this.rData.getHindi(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  
+   hindi_news.subscribe(data => {
+               // console.log("B"+i);
+                //தமிழ்
+                //this.testRadioResult="தமிழ்";
+                this.valueItem="Hindi";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+});
+i=0;
+//console.log("inside demo ends here"+xmlData);
+}
+
+else if(this.languageValue=="Malayalam"){
+  var malayalam_news =this.rData.getMalayalam(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  
+   malayalam_news.subscribe(data => {
+                //console.log("B"+i);
+                //தமிழ்
+                //this.testRadioResult="தமிழ்";
+                this.valueItem="Malayalam";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+});
+i=0;
+//console.log("inside demo ends here"+xmlData);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   doExecute(){
@@ -314,7 +498,7 @@ else{
   }
  
   }
-
+  /*
 
   doExecute1(){
   
@@ -499,7 +683,7 @@ else if(this.languageValue=="Hindi"){
   }
 
   }
-
+  */
 
   openBrowser(){
       console.log("inside open browser"+this.link);
@@ -508,7 +692,7 @@ else if(this.languageValue=="Hindi"){
     }
     
     whatsappShare(){
-    this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahVEhpY0pUTlI1WXJEczByRllnM2lfa0VfUDdz/view?usp=drivesdk" /* url */)
+    this.sharingVar.share(this.title,this.desc, this.image /*Image*/,  "https://drive.google.com/file/d/0B1mw3GMKieahb3JSOEdZbkZBOGFES2tialBkaHF4WDZNTENn/view?usp=drivesdk" /* url */)
       
   }
   dismiss() {
@@ -620,7 +804,7 @@ else if(this.languageValue=="Hindi"){
                 }
                 else{
                 console.log("6");
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 }
 
 
@@ -660,7 +844,7 @@ else if(this.languageValue=="Hindi"){
                 }
                 else{
                 console.log("6");
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
                 }
 
 

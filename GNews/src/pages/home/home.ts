@@ -13,7 +13,16 @@ var xmlData;
   templateUrl: 'home.html'
 })
 export class HomePage {
+ public readMore:any;
   public title:any;
+  public desc:any;
+  public link:any;
+  public image:any;
+  public valueItem:any;
+
+
+
+  public title1:any;
   public title_india:any;
   public title_world:any;
   public title_movies:any;
@@ -142,7 +151,7 @@ export class HomePage {
                 xmlData = parser.parseFromString(data, "application/xml");
 
                 // var elems = document.querySelectorAll('item,title')
-                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.title1 = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
                 
                 this.description_match1 = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 console.log("desc is"+this.description_match1);
@@ -278,25 +287,26 @@ loadData(){
 
 
 doExecute(){
-
+var i=0;
+console.log("ethukku"+this.testRadioResult);
 /*let modal = this.modalCtrl.create(LanguagePage);
     modal.present();*/
  if(this.testRadioResult=="English"){
   this.testRadioOpen = false;}
 
   else{
+  console.log("1A");
 
-this.navCtrl.push(LanguagePage, {
-    lang: this.testRadioResult
-});
-  }
- /* if(this.testRadioResult=="Tamil"){
-  //templateUrl: 'language.html';
+  if(this.testRadioResult=="Tamil"){
   var tamil_news =this.rData.getTamil(); 
+  //if(visitedTamil == false){
+  //visitedTamil=true;
+  console.log("2A");
    tamil_news.subscribe(data => {
-                
+                console.log("3A");
                 //தமிழ்
                 this.testRadioResult="தமிழ்";
+                this.valueItem="Tamil";
                 var parser = new DOMParser();
                 xmlData = parser.parseFromString(data, "application/xml");
 
@@ -305,18 +315,274 @@ this.navCtrl.push(LanguagePage, {
                 this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
                 this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                 //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
-                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.readMore="மேலும் படிக்க";
+                this.move();
+                //alert("not from home"+this.image+this.readMore);
+                //console.log("ethukku"+this.image);
+            }); 
+            console.log("4A");
+  //}console.log("2A");
+  i=0;
+  /*else {
+            i = i + 1;
+              if (i > 23) {
+                i = 0;
+              }
+            tamil_news.subscribe(data => {
+                
+                console.log("C"+i);
+                //தமிழ்
+                this.testRadioResult="தமிழ்";
+                this.valueItem="Tamil";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
                 this.readMore="மேலும் படிக்க";
                 //console.log("ethukku"+this.image);
             }); 
+        }       
+        */
 }
-else if(this.testRadioResult=="English"){
-  this.dismiss();}*/
+  
+  else if(this.testRadioResult=="Hindi"){
+  var hindi_news =this.rData.getHindi(); 
+  //console.log("visited status"+visited);
+  //if(visitedHindi == false){
+  //visitedHindi=true;
+  
+   hindi_news.subscribe(data => {
+                console.log("D"+i);
+                //hindi
+                this.testRadioResult="हिन्दी";
+                this.valueItem="Hindi";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
 
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.readMore="और पढ़ें";
+                this.move();
+                //console.log("ethukku"+this.image);
+            });
+            i=0;
+ /*}
+ else{
+   i = i + 1;
+              if (i > 23) {
+                i = 0;
+              }
+hindi_news.subscribe(data => {
+                console.log("E"+i);
+                //hindi
+                this.testRadioResult="हिन्दी";
+                this.valueItem="Hindi";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("media:thumbnail")[0].getAttribute('url');
+                this.readMore="और पढ़ें";
+                //console.log("ethukku"+this.image);
+            });
+
+ }*/
+  //              this.dismiss();
+  }
+  else if(this.testRadioResult=="Urdu"){
+       var Urdu_news =this.rData.getUrdu(); 
+   //if(visitedMalayalam == false){
+  //visitedMalayalam=true;
+   Urdu_news.subscribe(data => {
+                
+                //malayalam
+                this.testRadioResult="اردو میں خبریں";
+                this.valueItem="Urdu";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.readMore="مزید پڑھ";
+                this.move();
+                //console.log("ethukku"+this.image);
+            });
+            i=0;
+            
+  }
+  else if(this.testRadioResult=="Sinhala"){
+       var Sinhala_news =this.rData.getSinhala(); 
+   //if(visitedMalayalam == false){
+  //visitedMalayalam=true;
+   Sinhala_news.subscribe(data => {
+                
+                //malayalam
+                this.testRadioResult="සිංහල පුවත්";
+                this.valueItem="Sinhala";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.readMore="වැඩිදුර කියවන්න";
+                this.move();
+                //console.log("ethukku"+this.image);
+            });
+            i=0;
+            
+  }
+  else if(this.testRadioResult=="Malayalam"){
+   var Malayalam_news =this.rData.getMalayalam(); 
+   var re1 = /&nbsp;/gi; 
+   var re2 = /<p>/gi;
+   var re3 = /<\/p>/gi;
+   //if(visitedMalayalam == false){
+  //visitedMalayalam=true;
+   Malayalam_news.subscribe(data => {
+                
+                //malayalam
+                this.testRadioResult="മലയാളം";
+                this.valueItem="Malayalam";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.title = this.title.replace(re1,"");
+                this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.desc = this.desc.replace(re1,"");
+                this.desc = this.desc.replace(re2,"");
+                this.desc = this.desc.replace(re3,"");
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
+                this.readMore="കൂടുതല് വായിക്കുക";
+                this.move();
+                //console.log("ethukku"+this.image);
+            });
+            i=0;
+           /* }
+else{
+   i = i + 1;
+              if (i > 23) {
+                i = 0;
+              }
+  Malayalam_news.subscribe(data => {
+                
+                //malayalam
+                this.testRadioResult="മലയാളം";
+                this.valueItem="Malayalam";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                this.image = xmlData.getElementsByTagName("item")[i].getElementsByTagName("enclosure")[0].getAttribute('url');
+                this.readMore="കൂടുതല് വായിക്കുക";
+                //console.log("ethukku"+this.image);
+            }); 
+    }       */     //this.dismiss();
+  }
+  else if(this.testRadioResult=="Nepali"){
+   var Nepali_news =this.rData.getNepali(); 
+   //if(visitedMalayalam == false){
+  //visitedMalayalam=true;
+   Nepali_news.subscribe(data => {
+                
+                //malayalam
+                this.testRadioResult="नेपाली समाचार";
+                this.valueItem="Nepali";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.readMore="थप पढ्नुहोस्";
+                this.move();
+                //console.log("ethukku"+this.image);
+            });
+            i=0;
+  
+  }
+  else if(this.testRadioResult=="Bengali"){
+         var Bengali_news =this.rData.getBengali(); 
+   //if(visitedMalayalam == false){
+  //visitedMalayalam=true;
+   Bengali_news.subscribe(data => {
+                
+                //malayalam
+                this.testRadioResult="বাংলা খবর";
+                this.valueItem="Bengali";
+                var parser = new DOMParser();
+                xmlData = parser.parseFromString(data, "application/xml");
+
+                // var elems = document.querySelectorAll('item,title')
+                this.title = xmlData.getElementsByTagName("item")[0].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                this.desc = xmlData.getElementsByTagName("item")[0].getElementsByTagName("description")[0].childNodes[0].nodeValue;
+                this.link=xmlData.getElementsByTagName("item")[0].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                //this.desc = xmlData.getElementsByTagName('desc')[i].childNodes[0].nodeValue;
+                //this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagName("enclosure")[0].getAttribute('url');
+                this.image = xmlData.getElementsByTagName("item")[0].getElementsByTagNameNS('http://search.yahoo.com/mrss/','thumbnail')[0].getAttribute('url');
+                this.readMore="আরও পড়ুন";
+                this.move();
+                //console.log("ethukku"+this.image);
+            });
+            i=0;
+  }
+ 
   }
 
 
+ 
+  }
 
+  
+
+  move(){
+  
+  this.navCtrl.push(LanguagePage, {
+    lang: this.valueItem,
+    head: this.testRadioResult,
+    t:this.title,
+    d:this.desc,
+    l:this.link,
+    im:this.image,
+    read:this.readMore,
+    dd:xmlData
+});
+  }
 
 
 doRadio() {
@@ -479,5 +745,6 @@ this.x.style.display = 'none';
 
   }
  }
+  }
 
-}
+
